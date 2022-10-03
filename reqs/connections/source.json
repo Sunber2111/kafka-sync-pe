@@ -1,0 +1,19 @@
+{
+  "name": "main-db-connector-3",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "postgres",
+    "database.server.id": "184054",
+    "database.dbname": "test_db",
+    "database.server.name": "postgresdb",
+    "table.whitelist":"public.comments,public.posts",
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "schema-changes.test_db",
+    "value.converter":"org.apache.kafka.connect.json.JsonConverter",
+    "key.converter":"org.apache.kafka.connect.json.JsonConverter"
+  }
+}
