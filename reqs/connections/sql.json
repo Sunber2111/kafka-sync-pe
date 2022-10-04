@@ -1,15 +1,22 @@
 {
-  "name": "sqlserver-posts-connector",
+  "name":"maindb",
   "config": {
     "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
-    "database.hostname": "localhost",
+    "tasks.max": "1",
+    "database.hostname": "172.25.176.1",
     "database.port": "1433",
     "database.user": "sa",
     "database.password": "123",
-    "database.dbname": "TestDB",
-    "database.server.name": "staging",
+    "database.dbname": "TestDb",
+    "database.server.name": "sqldb",
     "table.whitelist": "dbo.Posts",
-    "database.history.kafka.bootstrap.servers": "localhost:9092",
-    "database.history.kafka.topic": "dbhistory.Posts"
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "schema-changes.test_db",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "transforms": "dropTopicPrefix",
+    "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.dropTopicPrefix.regex": "sqldb.dbo.Posts",
+    "transforms.dropTopicPrefix.replacement": "posts"
   }
 }
