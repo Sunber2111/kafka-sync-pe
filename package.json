@@ -1,0 +1,23 @@
+{
+  "name": "kafka-sync-pe",
+  "version": "1.0.0",
+  "description": "### Schema",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sunber2111/kafka-sync-pe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sunber2111/kafka-sync-pe/issues"
+  },
+  "homepage": "https://github.com/Sunber2111/kafka-sync-pe#readme",
+  "dependencies": {
+    "kafkajs": "^2.2.2"
+  }
+}

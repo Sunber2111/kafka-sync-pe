@@ -1,5 +1,5 @@
 {
-  "name": "main-db-connector-3",
+  "name": "main-db-connector",
   "config": {
     "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
     "tasks.max": "1",
@@ -14,6 +14,7 @@
     "database.history.kafka.bootstrap.servers": "kafka:9092",
     "database.history.kafka.topic": "schema-changes.test_db",
     "value.converter":"org.apache.kafka.connect.json.JsonConverter",
-    "key.converter":"org.apache.kafka.connect.json.JsonConverter"
+    "key.converter":"org.apache.kafka.connect.json.JsonConverter",
+    "plugin.name": "pgoutput"
   }
 }
