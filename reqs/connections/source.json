@@ -10,11 +10,18 @@
     "database.server.id": "184054",
     "database.dbname": "test_db",
     "database.server.name": "postgresdb",
-    "table.whitelist":"public.comments,public.posts",
+    "table.whitelist": "public.comments,public.posts",
     "database.history.kafka.bootstrap.servers": "kafka:9092",
     "database.history.kafka.topic": "schema-changes.test_db",
-    "value.converter":"org.apache.kafka.connect.json.JsonConverter",
-    "key.converter":"org.apache.kafka.connect.json.JsonConverter",
-    "plugin.name": "pgoutput"
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "plugin.name": "pgoutput",
+    "transforms": "dropTopicPrefix,lowertopic",
+
+    "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.dropTopicPrefix.regex": "^[^.]+.(.*)",
+    "transforms.dropTopicPrefix.replacement": "$1",
+
+    "transforms.lowerTopic.type": "com.example.foo.LowerCase$Topic"
   }
 }
