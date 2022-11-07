@@ -1,5 +1,5 @@
 {
-  "name": "main-db-connector",
+  "name": "main-db-connector-2",
   "config": {
     "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
     "tasks.max": "1",

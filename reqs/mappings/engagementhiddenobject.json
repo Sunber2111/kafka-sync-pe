@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "Id": {
+        "type": "text"
+      },
+      "EngagementId": {
+        "type": "text"
+      },
+      "TodoId": {
+        "type": "text"
+      },
+      "ObjectId": {
+        "type": "text"
+      }
+    }
+  }
+}

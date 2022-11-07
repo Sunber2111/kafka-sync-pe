@@ -1,0 +1,17 @@
+{
+  "name": "elastic-sink-engagement-hidden-object-12",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max": "1",
+    "topics": "engagementhiddenobject",
+    "connection.url": "http://elasticsearch:9200",
+    "transforms": "unwrap,key",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.key.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+    "transforms.key.field": "Id",
+    "key.ignore": "false",
+    "type.name": "engagementhiddenobject",
+    "behavior.on.null.values": "delete"
+  }
+}

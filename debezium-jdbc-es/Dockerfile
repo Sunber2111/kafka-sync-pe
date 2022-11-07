@@ -16,7 +16,7 @@ RUN mkdir $KAFKA_CONNECT_JDBC_DIR && cd $KAFKA_CONNECT_JDBC_DIR &&\
 
 # Deploy Confluent Elasticsearch sink connector
 RUN mkdir $KAFKA_CONNECT_ES_DIR && cd $KAFKA_CONNECT_ES_DIR &&\
-        curl -sO http://packages.confluent.io/maven/io/confluent/kafka-connect-elasticsearch/5.0.0/kafka-connect-elasticsearch-5.0.0.jar && \
+        curl -sO http://packages.confluent.io/maven/io/confluent/kafka-connect-elasticsearch/5.1.0/kafka-connect-elasticsearch-5.1.0.jar && \
         curl -sO https://repo.maven.apache.org/maven2/io/searchbox/jest/2.0.0/jest-2.0.0.jar && \
         curl -sO https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore-nio/4.4.4/httpcore-nio-4.4.4.jar && \
         curl -sO https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar && \
@@ -26,4 +26,5 @@ RUN mkdir $KAFKA_CONNECT_ES_DIR && cd $KAFKA_CONNECT_ES_DIR &&\
         curl -sO https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar && \
         curl -sO https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar && \
         curl -sO https://repo.maven.apache.org/maven2/io/searchbox/jest-common/2.0.0/jest-common-2.0.0.jar && \
-        curl -sO https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.4/gson-2.4.jar
+        curl -sO https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.4/gson-2.4.jar && \
+        curl -sO https://repo1.maven.org/maven2/org/bouncycastle/bcpkix-fips/1.0.3/bcpkix-fips-1.0.3.jar

@@ -1,1 +1,6 @@
 node_modules
+
+    "transforms": "dropTopicPrefix",
+    "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.dropTopicPrefix.regex": "sqldb.dbo.Engagement",
+    "transforms.dropTopicPrefix.replacement": "engagement"

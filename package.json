@@ -4,7 +4,7 @@
   "description": "### Schema",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,13 @@
   },
   "homepage": "https://github.com/Sunber2111/kafka-sync-pe#readme",
   "dependencies": {
-    "kafkajs": "^2.2.2"
+    "@elastic/elasticsearch": "^6.7.0",
+    "@faker-js/faker": "^7.6.0",
+    "express": "^4.18.2",
+    "kafkajs": "^2.2.2",
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

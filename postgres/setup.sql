@@ -18,4 +18,6 @@ CREATE TABLE comments(
   body    VARCHAR(500) NOT NULL
 );
 
+ALTER SYSTEM SET wal_level = logical;
+
 COMMIT;

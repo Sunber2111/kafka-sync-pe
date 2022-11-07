@@ -1,0 +1,22 @@
+{
+  "name": "workingpaper-db-connector-12",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max": "1",
+    "database.hostname": "172.16.0.66",
+    "database.port": "1433",
+    "database.user": "sa",
+    "database.password": "123",
+    "database.dbname": "CAWorkingPaper",
+    "database.server.name": "sqldb",
+    "table.whitelist": "dbo.Engagement",
+    "database.history.kafka.bootstrap.servers": "kafka:29092",
+    "database.history.kafka.topic": "schema-changes.workingpaper",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "transforms": "dropTopicPrefix",
+    "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.dropTopicPrefix.regex": "sqldb.dbo.Engagement",
+    "transforms.dropTopicPrefix.replacement": "engagement"
+  }
+}
