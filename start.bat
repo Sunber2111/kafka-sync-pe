@@ -1,7 +1,7 @@
 # create indices with mappings
 # curl -i -X PUT -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:9200/engagementhiddenobject -d @reqs/mappings/engagementhiddenobject.json
 # curl -i -X PUT -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:9200/posts -d @reqs/mappings/posts.json
-# curl -i -X PUT -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:9200/postgresdb.public.comments -d @reqs/mappings/comments.json
+# curl -i -X PUT -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:9200/postgresdb.public.comments?include_type_name=true -d @reqs/mappings/comments.json
 
 # curl -i -X PUT -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:9200/postgresdb.public.comments/_mapping -d @reqs/mappings/comments.json
 postgresdb.public.comments
@@ -21,3 +21,12 @@ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json"
 
 es-sink-engagementhiddenobject.json
 curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @mapping/es-sink-engagementhiddenobject.json
+
+# create index
+curl -X PUT "localhost:9200/postgresdb.public.comments?pretty"
+
+
+
+ALTER SYSTEM SET wal_level = logical;
+
+export DEBEZIUM_VERSION=2.0

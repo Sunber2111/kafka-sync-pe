@@ -15,20 +15,54 @@ const pool = new Pool({
 
 app.get("/", async (req, res) => {
   await pool.query(
-    "SELECT * FROM public.comments WHERE body LIKE '%labore%' LIMIT 10000"
+    "SELECT * FROM public.comments WHERE body like '%labore%' and (post_id='3598' or post_id='6543' or post_id='5551' or post_id='69') LIMIT 10000"
   );
-  res.json("result");
+  res.json("234");
 });
 
 app.get("/v2", async (req, res) => {
-  await client.search({
+  let rtr = await client.search({
     index: "postgresdb.public.comments",
     body: {
-      query: { match: { body: "labore" } },
+      query: {
+        bool: {
+          must: [
+            {
+              match_phrase: { body: { query: "labore", slop: 1 } },
+            },
+            {
+              bool: {
+                should: [
+                  {
+                    match: {
+                      post_id: "3598",
+                    },
+                  },
+                  {
+                    match: {
+                      post_id: "6543",
+                    },
+                  },
+                  {
+                    match: {
+                      post_id: "5551",
+                    },
+                  },
+                  {
+                    match: {
+                      post_id: "69",
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
       size: 9999,
     },
   });
-  res.json("result");
+  res.json("234");
 });
 
 app.listen(3000);

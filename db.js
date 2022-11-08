@@ -15,27 +15,59 @@ const pool = new Pool({
   port: 5432,
 });
 
-let index = 31999;
+let index = 30300;
 let sum = 0;
 let req = 0;
-// setInterval(() => {
-//   index++;
-//   pool.query(
-//     "INSERT INTO public.comments(id, user_id, post_id, body) VALUES ($1, $2, $3, $4)",
-//     [
-//       index,
-//       getRandomInt(500, 5000),
-//       getRandomInt(1000, 5000),
-//       faker.lorem.paragraph(),
-//     ],
-//     (error, results) => {
-//       if (!error) {
-//         ++sum;
-//         console.log(`sum : ${sum}`);
-//       }
-//     }
-//   );
-// }, 5);
+setInterval(() => {
+  index++;
+  pool.query(
+    "INSERT INTO public.comments(id, user_id, post_id, body) VALUES ($1, $2, $3, $4)",
+    [
+      index,
+      getRandomInt(10, 5000),
+      getRandomInt(10, 6000),
+      faker.lorem.paragraph(),
+    ],
+    (error, results) => {
+      if (!error) {
+        ++sum;
+        console.log(`sum : ${sum}`);
+      }
+    }
+  );
+  index++;
+  pool.query(
+    "INSERT INTO public.comments(id, user_id, post_id, body) VALUES ($1, $2, $3, $4)",
+    [
+      index,
+      getRandomInt(10, 5000),
+      getRandomInt(10, 6000),
+      faker.lorem.paragraph(),
+    ],
+    (error, results) => {
+      if (!error) {
+        ++sum;
+        console.log(`sum : ${sum}`);
+      }
+    }
+  );
+  index++;
+  pool.query(
+    "INSERT INTO public.comments(id, user_id, post_id, body) VALUES ($1, $2, $3, $4)",
+    [
+      index,
+      getRandomInt(10, 5000),
+      getRandomInt(10, 6000),
+      faker.lorem.paragraph(),
+    ],
+    (error, results) => {
+      if (!error) {
+        ++sum;
+        console.log(`sum : ${sum}`);
+      }
+    }
+  );
+}, 10);
 
 // setInterval(() => {
 //   index++;
@@ -43,10 +75,7 @@ let req = 0;
 //     "INSERT INTO public.users(id, email) VALUES ($1, $2)",
 //     [index, faker.internet.email()],
 //     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//       console.log(`ok ${index}`);
+//       if (!error) console.log(`ok ${index}`);
 //     }
 //   );
 // }, 5);
@@ -55,7 +84,7 @@ let req = 0;
 //   index++;
 //   pool.query(
 //     "INSERT INTO public.posts(id, user_id, title) VALUES ($1, $2, $3)",
-//     [index, getRandomInt(1000, 5000), faker.git.commitMessage(100)],
+//     [index, getRandomInt(10, 6800), faker.git.commitMessage(100)],
 //     (error, results) => {
 //       if (!error) {
 //         console.log(`ok ${index}`);
@@ -63,22 +92,22 @@ let req = 0;
 //     }
 //   );
 // }, 5);
-const func = setInterval(() => {
-  const startTime = new Date().getTime();
-  pool.query(
-    "SELECT * FROM public.comments WHERE body LIKE '%labore%' LIMIT 10000",
-    (error, results) => {
-      if (!error) {
-        ++req;
-        let endTime = new Date().getTime();
-        sum = sum + (endTime - startTime);
-        pool.query(
-          "SELECT id, user_id, post_id, body FROM public.comments WHERE body NOT LIKE '%labore%'")
-        console.log("duration [ms] = " + (endTime - startTime));
-      }
-    }
-  );
-}, 350);
+// const func = setInterval(() => {
+//   const startTime = new Date().getTime();
+//   pool.query(
+//     "SELECT * FROM public.comments WHERE body LIKE '%labore%' LIMIT 10000",
+//     (error, results) => {
+//       if (!error) {
+//         ++req;
+//         let endTime = new Date().getTime();
+//         sum = sum + (endTime - startTime);
+//         pool.query(
+//           "SELECT id, user_id, post_id, body FROM public.comments WHERE body NOT LIKE '%labore%'")
+//         console.log("duration [ms] = " + (endTime - startTime));
+//       }
+//     }
+//   );
+// }, 350);
 
 // setInterval(() => {
 //   console.log(`avg [ms] = ${sum / req}`);
